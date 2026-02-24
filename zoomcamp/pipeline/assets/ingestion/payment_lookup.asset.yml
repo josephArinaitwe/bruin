@@ -1,0 +1,28 @@
+
+name: ingestion.payment_lookup
+
+# TODO: Set platform type.
+# Docs: https://getbruin.com/docs/bruin/assets/seed
+# suggested type: duckdb.seed
+type: duckdb.seed
+
+# Path to the CSV file (relative to this .asset.yml file).
+# Can also be a URL: https://example.com/data.csv
+parameters:
+  path: payment_lookup.csv
+
+# TODO: Define columns and add quality checks.
+# - Lookups should have a stable primary key.
+columns:
+  - name: payment_type_id
+    type: integer
+    description: TODO
+    primary_key: true
+    checks:
+      - name: not_null
+      - name: unique
+  - name: payment_type_name
+    type: string
+    description: TODO
+    checks:
+      - name: not_null
